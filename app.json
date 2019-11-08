@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Modesto Moves",
-    "slug": "rn-first-app",
+    "name": "RN Modesto Moves",
+    "slug": "reactNatMM",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
