@@ -16,14 +16,15 @@ export default class App extends React.Component {
     return (
       < ImageBackground
         style={styles.container}>
-        <View> 
-          <Button
-          title = "Event Calendar"
-          />
-        </View>
 
         <View style={styles.top}>
           <Image source={logo} style={styles.logo} />
+        </View>
+
+        <View>
+          <Button
+            title="Event Calendar"
+          />
         </View>
 
         <View style={styles.menuContainer}>
@@ -43,13 +44,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   top: {
-    height: '25%',
+    height: '50%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   logo: {
-    width: 150,
-    height: 150
+    width: 300,
+    height: 150,
+    alignItems: 'flex-start'
+
   },
   menuContatiner: {
     height: '40%',
