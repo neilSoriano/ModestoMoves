@@ -9,7 +9,7 @@ import {
   Button
 } from 'react-native';
 
-import logo from './images/ModestoMoves.png'
+import logo from './images/logo2.png'
 
 export default class App extends React.Component {
   render() {
@@ -22,9 +22,23 @@ export default class App extends React.Component {
         </View>
 
         <View>
-          <Button
-            title="Event Calendar"
+          <Button //Adding buttons to home menu
+            title = "Event Calendar" id = "cal" //onclick =
+            //<script src="../calendar.js">
+            //</script>
           />
+          <Button
+            title = "Statistics"
+          />
+          <Button
+            title = "Profile"
+          />
+          <Button
+            title = "Log Out"
+          />
+              
+            
+        
         </View>
 
         <View style={styles.menuContainer}>
@@ -39,7 +53,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#87cefa',
+    backgroundColor: '#1167b1',
     alignItems: 'center',
     justifyContent: 'center',
   },
