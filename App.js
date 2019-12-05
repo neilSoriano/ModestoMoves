@@ -16,17 +16,19 @@ import logo from './images/logo2.png'
 class LoginScreen extends React.Component {
   render() {
     return (
-      < ImageBackground
-            style = {styles.container}>
-            
-            <View style={styles.container}>
-            <Image source={logo} style={styles.logo} />
+      < ImageBackground style = {styles.container}>
+
+            <View style={styles.top}>
+                <Image source={logo} style={styles.logo} />
+            </View>
+
+            <View style={styles.button}>
             <Button
               title = "Login"
+              color = 'black'
               onPress={() => this.props.navigation.navigate('Home')}
             />
-        </View>
-            
+            </View>
        </ImageBackground>
 
     )
@@ -35,34 +37,42 @@ class LoginScreen extends React.Component {
 class HomeScreen extends React.Component {
   render() {
     return (
-        < ImageBackground
-                style={styles.container}>
+        <ImageBackground style={styles.container}>
 
                 <View style={styles.top}>
                   <Image source={logo} style={styles.logo} />
                 </View>
 
-                <View>
+                <View style={styles.button}> 
                   <Button //Adding buttons to home menu
                     title = "Event Calendar" //onclick =
+                    color = 'black'
                     onPress={() => this.props.navigation.navigate('Calendar')}
                   />
+                </View>
+                
+                <View style={styles.button}>
                   <Button
                     title = "Statistics"
+                    color = 'black'
                   />
+                </View>
+
+                <View style={styles.button}>  
                   <Button
                     title = "Profile"
+                    color = 'black'
                     onPress={() => this.props.navigation.navigate('Details')}
                   />
+                </View>
+                
+                <View style={styles.button}>
                   <Button
                     title = "Log Out"
+                    color = 'black'
                   />
                 </View>
-
-                <View style={styles.menuContainer}>
-
-                </View>
-              </ImageBackground>
+          </ImageBackground>
 
     );
   }
@@ -126,14 +136,14 @@ class CalendarScreen extends React.Component {
                     // Replace default arrows with custom ones (direction can be 'left' or 'right')
                     renderArrow={(direction) => (<Arrow />)}
                     // Do not show days of other months in month page. Default = false
-                    hideExtraDays={true}
+                    hideExtraDays={false}
                     // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
                     // day from another month that is visible in calendar page. Default = false
                     disableMonthChange={true}
                     // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-                    firstDay={1}
+                    firstDay={0}
                     // Hide day names. Default = false
-                    hideDayNames={true}
+                    hideDayNames={false}
                     // Show week numbers to the left. Default = false
                     showWeekNumbers={false}
                     // Handler which gets executed when press arrow icon left. It receive a callback can go back month
@@ -174,11 +184,30 @@ const styles = StyleSheet.create({
     height: 150,
     alignItems: 'flex-start'
   },
-  menuContainer: {
-    height: '40%',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
+  button: {
+    width:"90%", 
+    margin: 10, 
+    backgroundColor: 'orange'
   }
+
+  /* buttonStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#007aff',
+    marginLeft: 5,
+    marginRight: 5
+  }, 
+  textStyle: {
+    alignSelf: 'center',
+    color: '#007aff',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+  } */
 
 });
 
