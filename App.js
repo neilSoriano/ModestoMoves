@@ -135,7 +135,7 @@ class CalendarScreen extends React.Component {
                     // Hide day names. Default = false
                     hideDayNames={true}
                     // Show week numbers to the left. Default = false
-                    showWeekNumbers={true}
+                    showWeekNumbers={false}
                     // Handler which gets executed when press arrow icon left. It receive a callback can go back month
                     onPressArrowLeft={substractMonth => substractMonth()}
                     // Handler which gets executed when press arrow icon left. It receive a callback can go next month
