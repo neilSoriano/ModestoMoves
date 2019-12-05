@@ -13,6 +13,19 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { Calendar, CalendarList } from 'react-native-calendars';
 import logo from './images/logo2.png'
 
+class LoginScreen extends React.Component {
+  render() {
+    return (
+        <View style={styles.container}>
+            <Text>Login</Text>
+            <Button
+                title = "Login"
+                onPress={() => this.props.navigation.navigate('Home')}
+            />
+        </View>
+    )
+  }
+}
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -93,7 +106,7 @@ class CalendarScreen extends React.Component {
                     // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
                     minDate={'2019-01-01'}
                     // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-                    maxDate={'2019-05-30'}
+                    maxDate={'2019-12-30'}
                     // Handler which gets executed on day press. Default = undefined
                     onDayPress={(day) => { console.log('selected day', day) }}
                     // Handler which gets executed on day long press. Default = undefined
@@ -128,10 +141,15 @@ class CalendarScreen extends React.Component {
 }
 
 const RootStack = createStackNavigator({
+  Login: LoginScreen,
   Home: HomeScreen,
   Details: DetailsScreen,
   Calendar: CalendarScreen,
-});
+},
+{
+ headerMode: 'none',
+}
+);
 
 const styles = StyleSheet.create({
   container: {
