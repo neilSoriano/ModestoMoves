@@ -16,13 +16,19 @@ import logo from './images/logo2.png'
 class LoginScreen extends React.Component {
   render() {
     return (
-        <View style={styles.container}>
-            <Text>Login</Text>
+      < ImageBackground
+            style = {styles.container}>
+            
+            <View style={styles.container}>
+            <Image source={logo} style={styles.logo} />
             <Button
-                title = "Login"
-                onPress={() => this.props.navigation.navigate('Home')}
+              title = "Login"
+              onPress={() => this.props.navigation.navigate('Home')}
             />
         </View>
+            
+       </ImageBackground>
+
     )
   }
 }
@@ -167,9 +173,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 150,
     alignItems: 'flex-start'
-
   },
-  menuContatiner: {
+  menuContainer: {
     height: '40%',
     flexDirection: 'row',
     flexWrap: 'wrap'
