@@ -11,7 +11,7 @@ let {height, width} = Dimensions.get('window');
 export default class Map extends Component{
     render(){
       return(
-        <View style={styles.container}>
+        <View style={styles.mapContainer}>
           <MapView
              style={styles.map}
              initialRegion={{
@@ -28,7 +28,7 @@ export default class Map extends Component{
 }
 
 const styles = StyleSheet.create({
-    container: {
+    mapContainer: {
       height: height,
       width: width,
     },

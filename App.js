@@ -6,7 +6,8 @@ import {
   View,
   ImageBackground,
   Image,
-  Button
+  Button,
+  Dimensions
 } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -166,10 +167,12 @@ class CalendarScreen extends React.Component {
     }
 }
 
+let {height, width} = Dimensions.get('window');
+
 class MapScreen extends React.Component {
   render(){
     return(
-      <View style={styles.container}>
+      <View style={styles.mapContainer}>
         <MapView
            style={styles.map}
            initialRegion={{
@@ -220,7 +223,14 @@ const styles = StyleSheet.create({
     margin: 10, 
     borderRadius: 20,
     backgroundColor: 'orange'
-  }
+  },
+  mapContainer: {
+    height: height,
+    width: width,
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
 
   /* buttonStyle: {
     flex: 1,
