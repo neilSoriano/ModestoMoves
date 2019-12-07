@@ -206,7 +206,14 @@ class MapScreen extends React.Component {
              longitudeDelta: 0.0421,
            }}
            showsUserLocation = {true}
-           />
+           >
+          <MapView.Marker
+            coordinate={{
+              latitude: 37.364216,
+              longitude: -120.425419,
+            }}
+          />
+        </MapView>
       </View>
       )
   }
