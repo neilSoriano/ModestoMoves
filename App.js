@@ -58,6 +58,7 @@ class HomeScreen extends React.Component {
                   <Button
                     title = "Statistics"
                     color = 'black'
+                    onPress={() => this.props.navigation.navigate('Statistics')}
                   />
                 </View>
 
@@ -65,7 +66,7 @@ class HomeScreen extends React.Component {
                   <Button
                     title = "Profile"
                     color = 'black'
-                    onPress={() => this.props.navigation.navigate('Details')}
+                    onPress={() => this.props.navigation.navigate('Profile')}
                   />
                 </View>
 
@@ -89,27 +90,50 @@ class HomeScreen extends React.Component {
   }
 }
 
-class DetailsScreen extends React.Component {
+class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
         <Button
-          title="Go to Details... again"
-          onPress={() => this.props.navigation.push('Details')}
+          title="Profile Page"
+          onPress={() => this.props.navigation.push('Profile')}
         />
         <Button
           title="Go to Home"
           onPress={() => this.props.navigation.navigate('Home')}
         />
         <Button
-          title="Go back"
+          title="Return"
           onPress={() => this.props.navigation.goBack()}
         />
       </View>
     );
   }
 }
+
+class StatsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>User Statistics</Text>
+        <Button
+          title="Reload Screen"
+          onPress={() => this.props.navigation.push('Statistics')}
+        />
+        <Button
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+        <Button
+          title="Return"
+          onPress={() => this.props.navigation.goBack()}
+        />
+      </View>
+    );
+  }
+}
+
 
 class CalendarScreen extends React.Component {
     render() {
@@ -191,8 +215,9 @@ class MapScreen extends React.Component {
 const RootStack = createStackNavigator({
   Login: LoginScreen,
   Home: HomeScreen,
-  Details: DetailsScreen,
   Calendar: CalendarScreen,
+  Statistics: StatsScreen,
+  Profile: ProfileScreen,
   Map: MapScreen,
 },
 {
