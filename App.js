@@ -11,6 +11,8 @@ import {
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Calendar, CalendarList } from 'react-native-calendars';
+//import Map from './components/Map';
+import MapView from 'react-native-maps';
 import logo from './images/logo2.png'
 
 class LoginScreen extends React.Component {
@@ -63,6 +65,14 @@ class HomeScreen extends React.Component {
                     title = "Profile"
                     color = 'black'
                     onPress={() => this.props.navigation.navigate('Details')}
+                  />
+                </View>
+
+                <View style={styles.button}>  
+                  <Button
+                    title = "Track Runner"
+                    color = 'black'
+                    onPress={() => this.props.navigation.navigate('Map')}
                   />
                 </View>
                 
@@ -156,11 +166,31 @@ class CalendarScreen extends React.Component {
     }
 }
 
+class MapScreen extends React.Component {
+  render(){
+    return(
+      <View style={styles.container}>
+        <MapView
+           style={styles.map}
+           initialRegion={{
+             latitude: 37.364216,
+             longitude: -120.425419,
+             latitudeDelta: 0.0922,
+             longitudeDelta: 0.0421,
+           }}
+           showsUserLocation = {true}
+           />
+      </View>
+      )
+  }
+}
+
 const RootStack = createStackNavigator({
   Login: LoginScreen,
   Home: HomeScreen,
   Details: DetailsScreen,
   Calendar: CalendarScreen,
+  Map: MapScreen,
 },
 {
  headerMode: 'none',
@@ -173,7 +203,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1167b1',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }, 
   top: {
     height: '50%',
     alignItems: 'center',
@@ -186,7 +216,9 @@ const styles = StyleSheet.create({
   },
   button: {
     width:"90%", 
+    height: 40,
     margin: 10, 
+    borderRadius: 20,
     backgroundColor: 'orange'
   }
 
