@@ -1,12 +1,16 @@
 import * as React from 'react';
 //import { Button, View, Text } from 'react-native';
+import {useState} from 'react';
 import {
   StyleSheet,
   Text,
+  TextInput,
   View,
   ImageBackground,
   Image,
   Button,
+  Alert,
+  RefreshControl,
   Dimensions
 } from 'react-native';
 import { createAppContainer } from 'react-navigation';
@@ -16,15 +20,40 @@ import { Calendar, CalendarList } from 'react-native-calendars';
 import MapView from 'react-native-maps';
 import logo from './images/logo2.png'
 
+
+//const checkedIn = false;//useState('false');
+
+export default class App extends React.Component {
+    //const checkedIn = useState(false);
+    render(){
+
+        return <AppContainer />;
+    }
+}
+
+
 class LoginScreen extends React.Component {
   render() {
     return (
       < ImageBackground style = {styles.container}>
 
-            <View style={styles.top}>
-                <Image source={logo} style={styles.logo} />
+            <View style={styles.top}
+                style = {{alignItems: 'flex-start'}}
+            >
+                <Image source={logo} style={styles.logo}
+                />
             </View>
-
+            <TextInput
+                placeholder="Username"
+                style={{margin: 5, width: '80%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', padding: 10}}
+            >
+            </TextInput>
+            <TextInput
+                secureTextEntry={true}
+                placeholder="Password"
+                style={{margin: 5, width: '80%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', padding: 10}}
+            >
+            </TextInput>
             <View style={styles.button}>
             <Button
               title = "Login"
@@ -38,22 +67,36 @@ class LoginScreen extends React.Component {
   }
 }
 class HomeScreen extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { checkedIn: 0, };
+    }
   render() {
-    return (
-        <ImageBackground style={styles.container}>
+    if(this.state.checkedIn == 0) {
+            return(
+            <ImageBackground style={styles.container}>
 
                 <View style={styles.top}>
                   <Image source={logo} style={styles.logo} />
                 </View>
+                <View style={styles.button}>
+                  <Button
+                    title = "Check-In"
+                    color = 'black'
 
-                <View style={styles.button}> 
-                  <Button //Adding buttons to home menu
-                    title = "Event Calendar" //onclick =
+                    onPress={() => this.setState(state => ({checkedIn: 1}))}
+                    />
+
+                </View>
+
+                <View style={styles.button}>
+                  <Button
+                    title = "Event Calendar"
                     color = 'black'
                     onPress={() => this.props.navigation.navigate('Calendar')}
                   />
                 </View>
-                
+
                 <View style={styles.button}>
                   <Button
                     title = "Statistics"
@@ -62,7 +105,7 @@ class HomeScreen extends React.Component {
                   />
                 </View>
 
-                <View style={styles.button}>  
+                <View style={styles.button}>
                   <Button
                     title = "Profile"
                     color = 'black'
@@ -70,23 +113,85 @@ class HomeScreen extends React.Component {
                   />
                 </View>
 
-                <View style={styles.button}>  
+                <View style={styles.button}>
                   <Button
                     title = "Track Runner"
                     color = 'black'
                     onPress={() => this.props.navigation.navigate('Map')}
                   />
                 </View>
-                
+
                 <View style={styles.button}>
                   <Button
                     title = "Log Out"
                     color = 'black'
+                    onPress={() => this.props.navigation.navigate('Login')}
                   />
                 </View>
           </ImageBackground>
+          )
+        } else {
+            return(
+            <ImageBackground style={styles.container}>
 
-    );
+                <View style={styles.top}>
+                  <Image source={logo} style={styles.logo} />
+                </View>
+                <View style={styles.button}>
+
+                   <Button
+                    title = "Check-Out"
+                    color = 'black'
+                    onPress={() => this.setState(state => ({checkedIn: 0}))}
+                  />
+
+                </View>
+
+                <View style={styles.button}>
+                  <Button
+                    title = "Event Calendar"
+                    color = 'black'
+                    onPress={() => this.props.navigation.navigate('Calendar')}
+                  />
+                </View>
+
+                <View style={styles.button}>
+                  <Button
+                    title = "Statistics"
+                    color = 'black'
+                    onPress={() => this.props.navigation.navigate('Statistics')}
+                  />
+                </View>
+
+                <View style={styles.button}>
+                  <Button
+                    title = "Profile"
+                    color = 'black'
+                    onPress={() => this.props.navigation.navigate('Profile')}
+                  />
+                </View>
+
+                <View style={styles.button}>
+                  <Button
+                    title = "Track Runner"
+                    color = 'black'
+                    onPress={() => this.props.navigation.navigate('Map')}
+                  />
+                </View>
+
+                <View style={styles.button}>
+                  <Button
+                    title = "Log Out"
+                    color = 'black'
+                    onPress={() => this.props.navigation.navigate('Login')}
+                  />
+                </View>
+          </ImageBackground>
+          )
+        }
+
+
+
   }
 }
 
@@ -250,7 +355,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start'
   },
   button: {
-    width:"90%", 
+    width:"80%",
     height: 40,
     margin: 10, 
     borderRadius: 20,
@@ -285,4 +390,6 @@ const styles = StyleSheet.create({
 
 });
 
-export default createAppContainer(RootStack);
+const AppContainer = createAppContainer(RootStack)
+//export default createAppContainer(RootStack);
+// @refresh reset
